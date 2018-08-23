@@ -13,6 +13,21 @@ void print(node *head)
 	cout<<endl;
 }
 
+int length(node *head)
+{
+	if(head == NULL)
+	{
+		return 0;
+	}	
+	int count = 0;
+	while(head != NULL)
+	{
+		count++;
+		head=head->next;
+	}
+	return count;
+}
+
 node* takeInput()
 {
 	int data;
@@ -42,6 +57,6 @@ int main()
 {
 	node* head = takeInput();
 	print(head);
-	
+	cout<<"Length of the list is"<<length(head)<<endl;
 	return 0;
 }
