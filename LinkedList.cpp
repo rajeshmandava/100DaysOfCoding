@@ -12,6 +12,35 @@ void print(node *head)
 	}
 	cout<<endl;
 }
+
+//delete node at ith position
+node* deleteNode(node* head, int i)
+{
+	if(i==0)
+	{
+		node *temp = head;
+		temp->next = NULL;
+		head=head->next;
+		delete temp;
+		return head;
+	}
+	int count = 0;
+	node *temp = head;
+	while(temp!=NULL && count<i-1)
+	{
+		temp=temp->next;
+		count++;
+	}
+	if(temp->next!=NULL)
+	{
+		node *a = temp->next;
+		node *b = a->next;
+		temp->next = b;
+		delete a;
+	}
+	return head;
+}
+
 node* insertNode(node* head, int i, int data)
 {
 	node *newNode = new node(data);
@@ -103,6 +132,8 @@ int main()
 	cout<<"Length of the list is"<<length(head)<<endl;
 	printIthNode(head,2);
 	head=insertNode(head,0,10);
+	print(head);
+	head = deleteNode(head,2);
 	print(head);
 	return 0;
 }
