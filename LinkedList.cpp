@@ -12,7 +12,30 @@ void print(node *head)
 	}
 	cout<<endl;
 }
-
+node* insertNode(node* head, int i, int data)
+{
+	node *newNode = new node(data);
+	int count = 0;
+	node *temp = head;
+	if(i == 0)
+	{
+		newNode->next = head;
+		head = newNode;
+		return head;
+	}
+	while(temp!=NULL && count<i-1)
+	{
+		temp = temp->next;
+		count++;
+	}
+	if(temp!=NULL)
+	{
+		node *a = temp->next;
+		temp->next = newNode;
+		newNode->next =a;
+	}
+	return head;
+}
 int length(node *head)
 {
 	if(head == NULL)
@@ -79,5 +102,7 @@ int main()
 	print(head);
 	cout<<"Length of the list is"<<length(head)<<endl;
 	printIthNode(head,2);
+	head=insertNode(head,0,10);
+	print(head);
 	return 0;
 }
