@@ -178,6 +178,30 @@ node* append_LinkedList(node*head, int n)
 	return head;
 }
 
+//Given a sorted linked list (elements are sorted in ascending order). Eliminate duplicates from the given LL, such that output LL contains only unique elements.
+
+node* eliminate_duplicate(node* head)
+{
+	node* temp = head->next;
+	node* prev= head;
+	while(temp!=NULL)
+	{
+		if(prev->data == temp->data)
+		{
+			node* x= temp;
+			temp=temp->next;
+			prev->next = temp;	
+			delete x;
+		}
+		else
+		{
+			temp=temp->next;
+			prev=prev->next;
+		}
+	}
+	return head;
+}
+
 int main()
 {
 	node* head = takeInput();
