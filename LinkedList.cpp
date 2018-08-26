@@ -100,6 +100,25 @@ void printIthNode(node *head,int i)
 		}
 	}
 }
+
+node* deleteNodeRec(node* head, int i)
+{
+	if(head == NULL)
+	{
+		return NULL;
+	}
+
+	if(i == 0)
+	{
+		node* a=head;
+		head = head->next;
+		delete a;
+		return head;
+	}
+	node *x = deleteNodeRec(head->next,i-1);
+	head->next = x;
+	return head;
+}
 node* takeInput()
 {
 	int data;
@@ -134,6 +153,8 @@ int main()
 	head=insertNode(head,0,10);
 	print(head);
 	head = deleteNode(head,2);
+	print(head);
+	head = deleteNodeRec(head,2);
 	print(head);
 	return 0;
 }
