@@ -143,6 +143,23 @@ node* takeInput()
 	return head;
 }
 
+//Given a linked list and an integer n you need to find and return index where n is present in the LL. Do this iteratively.
+
+int indexOfNIter(node* head, int n)
+{
+	int count = 0;
+	while(head!=NULL)
+	{
+		if(head->data == n)
+			return count;
+		count++;
+		head=head->next;
+	}
+	return -1;
+}
+
+
+
 
 int main()
 {
@@ -156,5 +173,6 @@ int main()
 	print(head);
 	head = deleteNodeRec(head,2);
 	print(head);
+	cout<<indexOfNIter(head,5)<<endl;
 	return 0;
 }
