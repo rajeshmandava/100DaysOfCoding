@@ -159,7 +159,24 @@ int indexOfNIter(node* head, int n)
 }
 
 
+//Given a linked list and an integer n, append the last n elements of the LL to front.
 
+node* append_LinkedList(node*head, int n)
+{
+	node* temp=head, *t=head;
+	int i=-n;
+	while(temp->next!=NULL)
+	{
+		if(i>=0)
+		   t=t->next;
+		temp=temp->next;
+		i++;	
+	}
+	temp->next = head;
+	head=t->next;
+	t->next = NULL;
+	return head;
+}
 
 int main()
 {
@@ -174,5 +191,7 @@ int main()
 	head = deleteNodeRec(head,2);
 	print(head);
 	cout<<indexOfNIter(head,5)<<endl;
+	head = append_LinkedList(head,2);
+	print(head);
 	return 0;
 }
