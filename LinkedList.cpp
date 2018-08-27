@@ -201,11 +201,20 @@ node* eliminate_duplicate(node* head)
 	}
 	return head;
 }
-
+void print_reverse(node* head)
+{
+	if(head == NULL)
+	{
+		return;
+	}
+	print_reverse(head->next);
+	cout<<head->data<<" ";
+}
 int main()
 {
 	node* head = takeInput();
-	print(head);
+	print_reverse(head);
+/*	print(head);
 	cout<<"Length of the list is"<<length(head)<<endl;
 	printIthNode(head,2);
 	head=insertNode(head,0,10);
@@ -217,5 +226,5 @@ int main()
 	cout<<indexOfNIter(head,5)<<endl;
 	head = append_LinkedList(head,2);
 	print(head);
-	return 0;
+*/	return 0;
 }
