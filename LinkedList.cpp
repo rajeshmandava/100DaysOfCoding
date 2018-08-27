@@ -79,7 +79,7 @@ int length(node *head)
 	}
 	return count;
 }
-
+//Finding the length of linked list recursively
 int length_Rec(node* head)
 {
 	if(head == NULL)
@@ -111,7 +111,7 @@ void printIthNode(node *head,int i)
 		}
 	}
 }
-
+//Deleting node recursively
 node* deleteNodeRec(node* head, int i)
 {
 	if(head == NULL)
@@ -238,12 +238,33 @@ bool has_cycle(node* head)
 	}
 	return false;
 }
+
+//finding an element in linked list
+
+bool search_Rec(node* head, int n)
+{
+	if(head == NULL)
+	{
+		return false;
+	}
+	
+	if(head->data == n)
+	{
+		return true;
+	}
+	bool ans = search_Rec(head->next,n);
+	return ans;
+}
+
 int main()
 {
 	node* head = takeInput();
+	cout<<"  "<<search_Rec(head,2)<<endl;
 
+
+/*
 	cout<<length_Rec(head)<<endl;
-/*	print_reverse(head);
+	print_reverse(head);
 	cout<<"checking is linked list has cycle "<<has_cycle(head)<<endl;
 	print(head);
 	cout<<"Length of the list is"<<length(head)<<endl;
