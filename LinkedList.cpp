@@ -79,6 +79,17 @@ int length(node *head)
 	}
 	return count;
 }
+
+int length_Rec(node* head)
+{
+	if(head == NULL)
+	{
+		return 0;
+	}
+	int ans=length_Rec(head->next);
+	return ans+1;
+
+}
 void printIthNode(node *head,int i)
 {
 	if(head == NULL)
@@ -230,9 +241,11 @@ bool has_cycle(node* head)
 int main()
 {
 	node* head = takeInput();
-	print_reverse(head);
+
+	cout<<length_Rec(head)<<endl;
+/*	print_reverse(head);
 	cout<<"checking is linked list has cycle "<<has_cycle(head)<<endl;
-/*	print(head);
+	print(head);
 	cout<<"Length of the list is"<<length(head)<<endl;
 	printIthNode(head,2);
 	head=insertNode(head,0,10);
