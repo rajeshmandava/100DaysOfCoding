@@ -256,10 +256,36 @@ bool search_Rec(node* head, int n)
 	return ans;
 }
 
+//Print nth node from the end of linked list
+void printNthFromLast(node* head,int n)
+{	
+	if(head == NULL)
+		return;
+	node* temp = head;
+	int len=0;
+	while(temp!=NULL)
+	{
+		temp=temp->next;
+		len++;
+	}
+	if(len<n)
+		return;
+	temp=head;
+	for(int i=1;i<len-n+1;i++)
+	{
+		temp=temp->next;
+	}
+	cout<<temp->data<<endl;
+
+}
+
 int main()
 {
 	node* head = takeInput();
-	cout<<"  "<<search_Rec(head,2)<<endl;
+
+	printNthFromLast(head,2);
+	
+	/*cout<<"  "<<search_Rec(head,2)<<endl;
 
 
 /*
