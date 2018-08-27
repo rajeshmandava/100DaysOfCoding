@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 #include"node.cpp"
-
+#include<set>
 
 void print(node *head)
 {
@@ -210,10 +210,28 @@ void print_reverse(node* head)
 	print_reverse(head->next);
 	cout<<head->data<<" ";
 }
+
+
+//Detecting a cycle in linked list
+bool has_cycle(node* head)
+{
+	set<node*> ans;
+	while(head!=NULL)
+	{
+		if(ans.find(head)!=ans.end())
+		{
+			return true;
+		}
+		ans.insert(head);
+		head=head->next;
+	}
+	return false;
+}
 int main()
 {
 	node* head = takeInput();
 	print_reverse(head);
+	cout<<"checking is linked list has cycle "<<has_cycle(head)<<endl;
 /*	print(head);
 	cout<<"Length of the list is"<<length(head)<<endl;
 	printIthNode(head,2);
