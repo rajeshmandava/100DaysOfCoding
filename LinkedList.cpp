@@ -278,13 +278,27 @@ void printNthFromLast(node* head,int n)
 	cout<<temp->data<<endl;
 
 }
-
+//Print middle of the linked list
+void printMiddle(node *head)
+{
+	if(head == NULL)
+		return;
+	node* fast=head;
+	node* slow=head;
+	while(fast!=NULL && fast->next!=NULL)
+	{
+		fast=fast->next->next;
+		slow=slow->next;
+	}
+	cout<<slow->data<<endl;
+}
 int main()
 {
 	node* head = takeInput();
 
-	printNthFromLast(head,2);
-	
+	printMiddle(head);
+	/*printNthFromLast(head,2);
+
 	/*cout<<"  "<<search_Rec(head,2)<<endl;
 
 
