@@ -292,11 +292,25 @@ void printMiddle(node *head)
 	}
 	cout<<slow->data<<endl;
 }
+
+//finding occurences of a key in linked list
+int count(node* head, int key)
+{
+	if(head == NULL)
+	{
+		return 0;
+	}
+	int ans = count(head->next,key);
+	if(head->data == key)
+		return ans+1;
+	else
+		return ans;
+}
 int main()
 {
 	node* head = takeInput();
-
-	printMiddle(head);
+	cout<<count(head,2)<<endl;
+    /*printMiddle(head);
 	/*printNthFromLast(head,2);
 
 	/*cout<<"  "<<search_Rec(head,2)<<endl;
