@@ -306,10 +306,68 @@ int count(node* head, int key)
 	else
 		return ans;
 }
+
+//function to remove duplicates in unsorted linked list
+
+Node* newNode(int data)
+{
+	Node *temp = new Node;
+	temp->data = data;
+	temp->next = NULL;
+	return NULL;
+}
+
+void printNode(Node *head)
+{
+	if(head == NULL)
+	{
+		return;
+	}
+	while(head != NULL)
+	{
+		cout<<head->data<<" ";
+		head=head->next;
+	}
+	cout<<endl;
+}
+
+Node* removeDuplicates(Node* head)
+{
+	if(head == NULL)
+	{
+		return;
+	}
+	Node* ptr1,ptr2,dup;
+	ptr1=head;
+	while(ptr1!=NULL && ptr1->next!=NULL)
+	{
+		ptr2=ptr1;
+		while(ptr2->next!=NULL)
+		{
+			if(ptr1->data == ptr2->next->data)
+			{
+				dup = ptr2->next;
+				ptr2->next = ptr2->next->next;
+				delete(dup);
+			}
+			else
+			{
+				ptr2=ptr2->next;
+			}
+		}
+		ptr1=ptr1->next;
+	}
+}
+
 int main()
 {
 	node* head = takeInput();
-	cout<<count(head,2)<<endl;
+	head = eliminate_duplicate(head);
+	print(head);
+
+
+
+	/*cout<<count(head,2)<<endl;
     /*printMiddle(head);
 	/*printNthFromLast(head,2);
 
